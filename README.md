@@ -30,6 +30,9 @@ pole2 === []
 pole3 === [4, 3, 2, 1]
 ```
 
+In node.js:
+![Example answer](./example_answer.png)
+
 ## For future:
 Add helper function to test whether the array contents are valid eg: During computation, an array === [2, 3] is not valid, because 2 is smaller than 3 and the array elements should be decrementing.
 

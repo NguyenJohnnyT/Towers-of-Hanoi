@@ -26,8 +26,9 @@ function towersInit(numDiscs) {
     pole1.push(numDisc)
   }
   console.log(`poles start with the following: `);
-  console.log(pole1, pole2, pole3);
-  console.log('------start-------')
+  console.log('     pole1         pole2   pole3');
+  console.log(pole1, ' __ ', pole2, ' __ ', pole3);
+  console.log('------------start-------------')
 }
 
 /**
@@ -47,7 +48,7 @@ function Towers(numDiscs, from, to, spare) {
   //TODO: Move the 'disc'
 
   //*Prints out the current status of the poles
-  console.log(pole1, pole2, pole3);
+  console.log(pole1, ' __ ', pole2, ' __ ', pole3);
 
   //TODO: A second recursive call
 
