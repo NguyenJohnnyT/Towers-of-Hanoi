@@ -4,7 +4,6 @@
 //|       <ll>       ll       ll     ======>      ll       ll        <ll> 
 //|      < ll >      ll       ll     ======>      ll       ll       < ll > 
 //|     <  ll  >     ll       ll                  ll       ll      <  ll  > 
-//|      pole1     pole2    pole3                pole1    pole2     pole3
 //
 // !Rules
 // *Can only move one disc at a time to any of the poles
@@ -18,7 +17,7 @@
 const pole1 = [];
 const pole2 = [];
 const pole3 = [];
-var started = false;
+var started = false
 
 function towersInit(numDiscs) {
   started = !started
@@ -30,7 +29,6 @@ function towersInit(numDiscs) {
   console.log(pole1, ' __ ', pole2, ' __ ', pole3);
   console.log('------------start-------------')
 }
-
 /**
  * Use recursion to follow the rules and achieve the goal mentioned above
  * 
@@ -40,29 +38,23 @@ function towersInit(numDiscs) {
  * @param {array} spare The auxiliary pole
  */
 function Towers(numDiscs, from, to, spare) {
-  if (!started) towersInit(numDiscs); //initialize the arrays
-  //TODO: Base case
+  if (!started) towersInit(numDiscs); //initialize the array
+  if (numDiscs === 0) return
 
-  //TODO: A recursive call
+  Towers(numDiscs-1, from, spare, to);
   
-  //TODO: Move the 'disc'
-
-  //*Prints out the current status of the poles
+  //! Moving the disc
+  // console.log(`Move Disc ${n} from `);
+  // console.log(from);
+  // console.log('to');
+  // console.log(to);
+  let disc = from.pop();
+  to.push(disc);
+  // console.log(`--Curent:--`);
   console.log(pole1, ' __ ', pole2, ' __ ', pole3);
 
-  //TODO: A second recursive call
-
+  Towers(numDiscs-1, spare, to, from);
 }
 
+console.log('calling Towers(4, pole1, pole3, pole2)');
 Towers(3, pole1, pole3, pole2);
-//! Should print:
-// poles start with the following:
-// [ 3, 2, 1 ] [] []
-// ------start-------
-// [ 3, 2 ] [] [ 1 ]
-// [ 3 ] [ 2 ] [ 1 ]
-// [ 3 ] [ 2, 1 ] []
-// [] [ 2, 1 ] [ 3 ]
-// [ 1 ] [ 2 ] [ 3 ]
-// [ 1 ] [] [ 3, 2 ]
-// [] [] [ 3, 2, 1 ]
