@@ -31,7 +31,7 @@ pole2 === []
 pole3 === [4, 3, 2, 1]
 ```
 
-In the terminal (note that each element per corresponding array will always be smaller than the element befoer it):
+In the terminal (note that each element per corresponding array will always be smaller than the element before it):
 
 ![Example answer](./example_answer.png)
 
