@@ -14,23 +14,25 @@ What you are given:
 * A helper function to initialize `pole1`
 * Skeleton code for `Tower`. This will be called at the end and the result should resemble the comment at the end of `hanoi.js`
 
-Example:
-```js
-Tower(numDisc, from, to, spare)
-Calling Tower(4, pole1, pole3, pole2) should visually start and end like this.
+Run the js file via `node hanoi.js` and check out the console!
 
-Start:
+Example:
+Tower(numDisc, from, to, spare)
+Calling `Tower(4, pole1, pole3, pole2)` should move elements from `pole1` to `pole3` while following the rules.
+```
+Starting state of each pole array:
 pole1 = [4, 3, 2, 1] 
 pole2 = []
 pole3 = []
 
-End:
+End Result:
 pole1 === []
 pole2 === []
 pole3 === [4, 3, 2, 1]
 ```
 
-In node.js:
+In the terminal (note that each element per corresponding array will always be smaller than the element befoer it):
+
 ![Example answer](./example_answer.png)
 
 ## For future:
