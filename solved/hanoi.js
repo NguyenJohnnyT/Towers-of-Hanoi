@@ -4,7 +4,6 @@
 //|       <ll>       ll       ll     ======>      ll       ll        <ll> 
 //|      < ll >      ll       ll     ======>      ll       ll       < ll > 
 //|     <  ll  >     ll       ll                  ll       ll      <  ll  > 
-//|      pole1     pole2    pole3                pole1    pole2     pole3
 //
 // !Rules
 // *Can only move one disc at a time to any of the poles
@@ -18,19 +17,18 @@
 const pole1 = [];
 const pole2 = [];
 const pole3 = [];
-var started = false;
+var started = false
 
 function towersInit(numDiscs) {
   started = !started
   for (let numDisc = numDiscs; numDisc > 0; numDisc--) {
     pole1.push(numDisc)
   }
-  console.log(`poles start with the following: `);
+  console.log('\u001b[0m', `poles start with the following: `);
   console.log('     pole1         pole2   pole3');
   console.log(pole1, ' __ ', pole2, ' __ ', pole3);
-  console.log('------------start-------------')
+  console.log(`\u001b[30;42m--------move the elements!--------\u001b[0m`)
 }
-
 /**
  * Use recursion to follow the rules and achieve the goal mentioned above
  * 
@@ -40,29 +38,26 @@ function towersInit(numDiscs) {
  * @param {array} spare The auxiliary pole
  */
 function Towers(numDiscs, from, to, spare) {
-  if (!started) towersInit(numDiscs); //initialize the arrays
-  //TODO: Base case
+  if (!started) towersInit(numDiscs); //initialize the array
+  if (numDiscs === 0) return //base case --> 0 discs to move
 
-  //TODO: A recursive call
+  //Think about ignoring the nth numDisc, and moving towards the simplest case.  As we approach the simpler case, we are moving the discs to the spare pole, hence the 2nd and 3rd parameters being (from) and (spare) and the auxiliary being (to).
+  Towers(numDiscs-1, from, spare, to); 
   
-  //TODO: Move the 'disc'
-
-  //*Prints out the current status of the poles
+  //! Moving the disc
+  //When numDiscs === 0, we go back up the tree to when numDisc === 1, and so on.
+  //We now are actually moving the disc or the element to the either the auxiliary or final pole (because we call a second recursion after this)
+  let disc = from.pop();
+  to.push(disc);
   console.log(pole1, ' __ ', pole2, ' __ ', pole3);
 
-  //TODO: A second recursive call
-
+  //We call a second recursion so we can move the disc from the (spare) pole to the (to) pole.
+  Towers(numDiscs-1, spare, to, from);
 }
 
-Towers(3, pole1, pole3, pole2);
-//! Should print:
-// poles start with the following:
-// [ 3, 2, 1 ] [] []
-// ------start-------
-// [ 3, 2 ] [] [ 1 ]
-// [ 3 ] [ 2 ] [ 1 ]
-// [ 3 ] [ 2, 1 ] []
-// [] [ 2, 1 ] [ 3 ]
-// [ 1 ] [ 2 ] [ 3 ]
-// [ 1 ] [] [ 3, 2 ]
-// [] [] [ 3, 2, 1 ]
+//Try playing with small or different disc amounts, and drawing the recursive tree (or use pythontutor) to visualize the code!
+numberOfDiscs = 3;
+console.log('');
+console.log(`\u001b[31;1;4mcalling \u001b[36;1;4mTowers(${numberOfDiscs}, pole1, pole3, pole2)`);
+
+Towers(numberOfDiscs, pole1, pole3, pole2);
